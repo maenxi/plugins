@@ -3,7 +3,7 @@ namespace Maenxi\Config;
 
 class Config
 {
-    public static $config = [];
+    private static $config = [];
     private static $_instance;
     public static function getInstance()
     {
@@ -14,11 +14,11 @@ class Config
         return self::$_instance;
     }
 
-    public function parser(string $sConfigPath)
+    public function parser($sConfigPath)
     {
         $sConfigPath = rtrim($sConfigPath, DIRECTORY_SEPARATOR);
-        if(is_dir($sConfigPath)){
-            throw new \Exception("{$sConfigPath} is not dir", -1);
+        if(!is_dir($sConfigPath)){
+            throw new \Exception("{$sConfigPath} not a directory", -1);
         }
 
         $aFileList = scandir($sConfigPath);
@@ -35,11 +35,10 @@ class Config
         return $this;
     }
 
-    public function get(string $sKey)
+    public function get($sKey = null)
     {
-        $val = null;
         $oKeys = explode('.', $sKey);
-        $oConfig = self::$config;
+        $val = $oConfig = self::$config;
         foreach($oKeys as $item){
             if(!isset($oConfig[$item])){
                 return null;

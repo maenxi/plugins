@@ -15,5 +15,6 @@
             "Maenxi\\": "src/"
         }
     },
-    "require": {}
+    "require": {},
+    "license": "MIT"
 }

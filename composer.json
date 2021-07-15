@@ -1,10 +1,19 @@
 {
     "name": "maenxi/plugins",
+    "description":"Build your own plug-in",
+    "version":"1.0.0",
+    "keywords": ["config"],
     "authors": [
         {
             "name": "mc",
-            "email": "machuang2264@163.com"
+            "email": "machuang2264@163.com",
+            "role": "Developer"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Maenxi\\": "src/"
+        }
+    },
     "require": {}
 }
